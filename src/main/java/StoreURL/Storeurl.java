@@ -63,23 +63,23 @@ public class Storeurl extends HttpServlet {
     protected void doGet(final HttpServletRequest request,
                          final HttpServletResponse response) throws ServletException, IOException {
         org.json.JSONObject result = new org.json.JSONObject();
-        String id="";
-        if(request.getParameter("userid")!=null){
+        String id = "";
+        if(request.getParameter("userid") != null){
             id = request.getParameter("userid");
         }
-        if (id==""){
+        if (id == ""){
             System.out.println("empty id");
             result.put("status", "False");
-            result.put("receivedurl","");
+            result.put("receivedurl", "");
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter writer = response.getWriter();
             writer.write(String.format("%s", result.toString()));   // 写入response返回给前端
             writer.println();
             writer.close();
         }
-        String origin_image_url ="";
+        String origin_image_url = "";
         if( request.getParameter("imageurl")!=null){
-            origin_image_url  = request.getParameter("imageurl");
+            origin_image_url = request.getParameter("imageurl");
         }
 
         String audio_url = "";
@@ -94,54 +94,52 @@ public class Storeurl extends HttpServlet {
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmm");
         String present_time = sdf.format(date);
-        long time=Long.parseLong(present_time);
+        long time = Long.parseLong(present_time);
 
         // 发送image和audio的URL给ai服务器，获取生成图片的URL
-//        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-//        int responseCode = con.getResponseCode();
-//        String received_url="";
-//        System.out.println(responseCode);
-//
-//        if(responseCode==200){
-//            //add request header
-//            BufferedReader instream = new BufferedReader(
-//                    new InputStreamReader(con.getInputStream()));
-//            String inputLine;
-//            StringBuffer buffer = new StringBuffer();
-//            while ((inputLine = instream.readLine()) != null) {
-//                buffer.append(inputLine);
-//            }
-//            instream.close();
-//            con.disconnect();
-//            System.out.println(buffer.toString());
-//            org.json.JSONObject jsonstring = new org.json.JSONObject(buffer.toString());
-//            //print result
-//
-//            if (jsonstring!=null){
-//                if(jsonstring.getString("processedurl")!=null){
-//                    received_url=jsonstring.getString("processedurl");
-//                }
-//                else{
-//                    System.out.println("no processedurl");
-//                }
-//            }
-//            else{
-//                System.out.println("return null result");
-//            }
-//        }
-//        else{
-//            System.out.println("connect to ai error!");
-//        }
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        int responseCode = con.getResponseCode();
+        String received_url = "";
+        System.out.println(responseCode);
+
+        if(responseCode == 200){
+            //add request header
+            BufferedReader instream = new BufferedReader(
+                    new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer buffer = new StringBuffer();
+            while ((inputLine = instream.readLine()) != null) {
+                buffer.append(inputLine);
+            }
+            instream.close();
+            con.disconnect();
+            System.out.println(buffer.toString());
+            org.json.JSONObject jsonstring = new org.json.JSONObject(buffer.toString());
+            //print result
+
+            if (jsonstring != null){
+                if(jsonstring.getString("processedurl") != null){
+                    received_url = jsonstring.getString("processedurl");
+                }
+                else{
+                    System.out.println("no processedurl");
+                }
+            }
+            else{
+                System.out.println("return null result");
+            }
+        }
+        else{
+            System.out.println("connect to ai error!");
+        }
 
 
-
-
-        String received_url="http://54.90.133.64/images/giphy.gif";
+        // String received_url="http://54.90.133.64/images/giphy.gif";
         System.out.println(received_url);
-        int good=0;
+        int good = 0;
 
-        String responsestatus= "False";
-        if(received_url!="") {
+        String responsestatus = "False";
+        if(received_url != "") {
             try {
                 responsestatus = store_to_mysql(id, time, good, received_url);
             } catch (SQLException e) {
@@ -149,7 +147,7 @@ public class Storeurl extends HttpServlet {
             }
         }
         result.put("status", responsestatus);
-        result.put("receivedurl",received_url);
+        result.put("receivedurl", received_url);
         response.setContentType("text/html; charset=UTF-8");
         PrintWriter writer = response.getWriter();
         writer.write(String.format("%s", result.toString()));   // 写入response返回给前端
