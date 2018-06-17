@@ -97,8 +97,10 @@ public class Storeurl extends HttpServlet {
         long time = Long.parseLong(present_time);
 
         // 发送image和audio的URL给ai服务器，获取生成图片的URL
+        System.out.println("send to AI server: "+origin_image_url+" and "+audio_url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         int responseCode = con.getResponseCode();
+        System.out.println("response code: "+responseCode);
         String received_url = "";
         System.out.println(responseCode);
 
