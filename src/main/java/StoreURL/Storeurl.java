@@ -87,7 +87,7 @@ public class Storeurl extends HttpServlet {
             audio_url  = request.getParameter("audiourl");
         }
         System.out.println(".......");
-        String url = "http://18.188.68.124?imageurl="+origin_image_url+"&audiourl="+audio_url;
+        String url = "http://34.217.68.39?imageurl="+origin_image_url+"&audiourl="+audio_url;
         System.out.println(url);
         System.out.println(".......");
         URL obj = new URL(url);

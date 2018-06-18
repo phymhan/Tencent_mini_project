@@ -50,7 +50,7 @@ public class GetUrl extends HttpServlet {
         System.out.println(request.getQueryString());
         String id="";
         if(request.getParameter("userid")!=null){
-            id =request.getParameter("userid");
+            id = request.getParameter("userid");
         }
 
         org.json.JSONObject result = new org.json.JSONObject();
@@ -59,7 +59,7 @@ public class GetUrl extends HttpServlet {
         if(id!="") {
             try {
                 System.out.println("start");
-                JSONArray jarray  = store_to_mysql(id);
+                JSONArray jarray = store_to_mysql(id);
                 result.put("user_urls",jarray);
                 responsestatus = "True";
             } catch (SQLException e) {
@@ -90,7 +90,7 @@ public class GetUrl extends HttpServlet {
     private JSONArray store_to_mysql(String id) throws SQLException {
         String sql = "SELECT * FROM ImageUrl  WHERE Id='" + id + "'";
         Statement stmt = null;
-        JSONArray jarray=new JSONArray();
+        JSONArray jarray = new JSONArray();
 
         try {
             stmt = conn.createStatement();
@@ -114,6 +114,4 @@ public class GetUrl extends HttpServlet {
 
         return jarray;
     }
-
-
 }
