@@ -28,10 +28,10 @@ public class Register extends HttpServlet {
     private static java.sql.Connection conn;
     private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     private static final String DB_NAME = "tencentmini";
-    private static final String Host_Name = "localhost:3306";
+    private static final String Host_Name = "rds-mysql-miniproj.clsyxr9gudld.us-west-2.rds.amazonaws.com:3306";
     private static final String URL = "jdbc:mysql://" + Host_Name + "/" + DB_NAME; //+ "?useUnicode=true&characterEncoding=UTF-8";
     private static final String DB_USER = "root";
-    private static final String DB_PWD = "123456";
+    private static final String DB_PWD = "12345678";
 
     public Register() throws ClassNotFoundException, SQLException, IOException {
         // MySQL setting
