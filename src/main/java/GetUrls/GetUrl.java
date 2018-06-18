@@ -54,13 +54,14 @@ public class GetUrl extends HttpServlet {
         }
 
         org.json.JSONObject result = new org.json.JSONObject();
-        String responsestatus= "False";
+        String responsestatus = "False";
         String profile_img="http://img2.3png.com/15a203b532e46e3440d0e89926363441d8e7.png";
         if(id!="") {
             try {
                 System.out.println("start");
                 JSONArray jarray  = store_to_mysql(id);
                 result.put("user_urls",jarray);
+                responsestatus = "True";
             } catch (SQLException e) {
                 e.printStackTrace();
             }
