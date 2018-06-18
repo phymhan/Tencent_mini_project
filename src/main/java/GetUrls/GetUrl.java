@@ -33,11 +33,11 @@ public class GetUrl extends HttpServlet {
 
     public GetUrl() throws ClassNotFoundException, SQLException, IOException {
         // MySQL setting
-        System.out.println("Initialization 1!!!");
+//        System.out.println("Initialization 1!!!");
         Class.forName(JDBC_DRIVER);
-        System.out.println("Initialization 2!!!");
+//        System.out.println("Initialization 2!!!");
         conn = DriverManager.getConnection(URL, DB_USER, DB_PWD);
-        System.out.println("Connect to server!!!");
+//        System.out.println("Connect to server!!!");
     }
 
     /*
@@ -47,16 +47,16 @@ public class GetUrl extends HttpServlet {
     @Override
     protected void doGet(final HttpServletRequest request,
                          final HttpServletResponse response) throws ServletException, IOException {
-        System.out.println(request.getQueryString());
-        String id="";
+//        System.out.println(request.getQueryString());
+        String id = "";
         if(request.getParameter("userid")!=null){
             id = request.getParameter("userid");
         }
 
         org.json.JSONObject result = new org.json.JSONObject();
         String responsestatus = "False";
-        String profile_img="http://img2.3png.com/15a203b532e46e3440d0e89926363441d8e7.png";
-        if(id!="") {
+        String profile_img = "http://img2.3png.com/15a203b532e46e3440d0e89926363441d8e7.png";
+        if(id != "") {
             try {
                 System.out.println("start");
                 JSONArray jarray = store_to_mysql(id);

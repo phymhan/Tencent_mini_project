@@ -34,11 +34,11 @@ public class LoginServlet extends HttpServlet {
 
     public LoginServlet() throws ClassNotFoundException, SQLException, IOException {
         // MySQL setting
-        System.out.println("Initialization 1!!!");
+//        System.out.println("Initialization 1!!!");
         Class.forName(JDBC_DRIVER);
-        System.out.println("Initialization 2!!!");
+//        System.out.println("Initialization 2!!!");
         conn = DriverManager.getConnection(URL, DB_USER, DB_PWD);
-        System.out.println("Connect to server!!!");
+//        System.out.println("Connect to server!!!");
     }
 
     /*
@@ -53,10 +53,10 @@ public class LoginServlet extends HttpServlet {
             id =request.getParameter("userid");
         }
         String password=request.getParameter("password");
-        System.out.println("get");
-        System.out.println(request.getQueryString());
+//        System.out.println("get");
+//        System.out.println(request.getQueryString());
         String ret_mysql = "";
-        if(id!="") {
+        if(id != "") {
             try {
                 ret_mysql = entrance_mysql(id, password);
             } catch (SQLException e) {

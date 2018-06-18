@@ -48,11 +48,11 @@ public class Storeurl extends HttpServlet {
 
     public Storeurl() throws ClassNotFoundException, SQLException, IOException {
         // MySQL setting
-        System.out.println("Initialization 1!!!");
+//        System.out.println("Initialization 1!!!");
         Class.forName(JDBC_DRIVER);
-        System.out.println("Initialization 2!!!");
+//        System.out.println("Initialization 2!!!");
         conn = DriverManager.getConnection(URL, DB_USER, DB_PWD);
-        System.out.println("Connect to server!!!");
+//        System.out.println("Connect to server!!!");
     }
 
     /*
@@ -100,7 +100,7 @@ public class Storeurl extends HttpServlet {
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         int responseCode = con.getResponseCode();
         String received_url = "";
-        System.out.println(responseCode);
+//        System.out.println(responseCode);
 
         if(responseCode == 200){
             //add request header
@@ -113,7 +113,7 @@ public class Storeurl extends HttpServlet {
             }
             instream.close();
             con.disconnect();
-            System.out.println(buffer.toString());
+//            System.out.println(buffer.toString());
             org.json.JSONObject jsonstring = new org.json.JSONObject(buffer.toString());
             //print result
 
@@ -135,7 +135,7 @@ public class Storeurl extends HttpServlet {
 
 
 //        String received_url="http://54.90.133.64/images/giphy.gif";
-        System.out.println(received_url);
+//        System.out.println(received_url);
         int good = 0;
 
         String responsestatus = "False";
@@ -172,8 +172,8 @@ public class Storeurl extends HttpServlet {
         Statement stmt = null;
         String sql = "INSERT INTO ImageUrl (Id,Time, Good, ImageURL) VALUES ('"+
                 id+"',"+Long.toString(time)+","+Integer.toString(good)+",'"+url+"')";
-        String responsestatus="True";
-        System.out.println(sql);
+        String responsestatus = "True";
+//        System.out.println(sql);
 
         try {
             stmt = conn.createStatement();

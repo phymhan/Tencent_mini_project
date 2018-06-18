@@ -32,11 +32,11 @@ public class GetUser extends HttpServlet {
 
     public GetUser() throws ClassNotFoundException, SQLException, IOException {
         // MySQL setting
-        System.out.println("Get User Initialization1 !!!");
+//        System.out.println("Get User Initialization1 !!!");
         Class.forName(JDBC_DRIVER);
-        System.out.println("Get User Initialization2 !!!");
+//        System.out.println("Get User Initialization2 !!!");
         conn = DriverManager.getConnection(URL, DB_USER, DB_PWD);
-        System.out.println("Connect to server!!!");
+//        System.out.println("Connect to server!!!");
     }
 
     /*
@@ -55,8 +55,8 @@ public class GetUser extends HttpServlet {
             name = request.getParameter("name");
         }
 
-        System.out.println("get");
-        System.out.println(request.getQueryString());
+//        System.out.println("get");
+//        System.out.println(request.getQueryString());
 
         String ret_mysql = "";
         if (id != "") {

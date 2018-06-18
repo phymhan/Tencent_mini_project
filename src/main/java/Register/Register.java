@@ -35,11 +35,11 @@ public class Register extends HttpServlet {
 
     public Register() throws ClassNotFoundException, SQLException, IOException {
         // MySQL setting
-        System.out.println("Initialization 1!!!");
+//        System.out.println("Initialization 1!!!");
         Class.forName(JDBC_DRIVER);
-        System.out.println("Initialization 2!!!");
+//        System.out.println("Initialization 2!!!");
         conn = DriverManager.getConnection(URL, DB_USER, DB_PWD);
-        System.out.println("Connect to server!!!");
+//        System.out.println("Connect to server!!!");
     }
 
     /*
