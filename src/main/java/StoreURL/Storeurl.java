@@ -135,7 +135,7 @@ public class Storeurl extends HttpServlet {
 
 
 //        String received_url="http://54.90.133.64/images/giphy.gif";
-        String received_url="http://54.90.133.64/images/test1.gif";
+        String received_url="http://54.90.133.64/images/test2.gif";
 //        System.out.println(received_url);
         int good = 0;
 
