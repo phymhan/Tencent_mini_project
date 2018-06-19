@@ -97,45 +97,45 @@ public class Storeurl extends HttpServlet {
         long time = Long.parseLong(present_time);
 
         // 发送image和audio的URL给ai服务器，获取生成图片的URL
-//        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-//        int responseCode = con.getResponseCode();
-//        String received_url = "";
-////        System.out.println(responseCode);
-//
-//        if(responseCode == 200){
-//            //add request header
-//            BufferedReader instream = new BufferedReader(
-//                    new InputStreamReader(con.getInputStream()));
-//            String inputLine;
-//            StringBuffer buffer = new StringBuffer();
-//            while ((inputLine = instream.readLine()) != null) {
-//                buffer.append(inputLine);
-//            }
-//            instream.close();
-//            con.disconnect();
-////            System.out.println(buffer.toString());
-//            org.json.JSONObject jsonstring = new org.json.JSONObject(buffer.toString());
-//            //print result
-//
-//            if (jsonstring != null){
-//                if(jsonstring.getString("processedurl") != null){
-//                    received_url = jsonstring.getString("processedurl");
-//                }
-//                else{
-//                    System.out.println("no processedurl");
-//                }
-//            }
-//            else{
-//                System.out.println("return null result");
-//            }
-//        }
-//        else{
-//            System.out.println("connect to ai error!");
-//        }
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        int responseCode = con.getResponseCode();
+        String received_url = "";
+//        System.out.println(responseCode);
+
+        if(responseCode == 200){
+            //add request header
+            BufferedReader instream = new BufferedReader(
+                    new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer buffer = new StringBuffer();
+            while ((inputLine = instream.readLine()) != null) {
+                buffer.append(inputLine);
+            }
+            instream.close();
+            con.disconnect();
+//            System.out.println(buffer.toString());
+            org.json.JSONObject jsonstring = new org.json.JSONObject(buffer.toString());
+            //print result
+
+            if (jsonstring != null){
+                if(jsonstring.getString("processedurl") != null){
+                    received_url = jsonstring.getString("processedurl");
+                }
+                else{
+                    System.out.println("no processedurl");
+                }
+            }
+            else{
+                System.out.println("return null result");
+            }
+        }
+        else{
+            System.out.println("connect to ai error!");
+        }
 
 
 //        String received_url="http://54.90.133.64/images/giphy.gif";
-        String received_url="http://54.90.133.64/images/test.gif";
+//        String received_url="http://54.90.133.64/images/test.gif";
         System.out.println(received_url);
         int good = 0;
 
